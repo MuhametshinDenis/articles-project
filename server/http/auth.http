@@ -1,0 +1,28 @@
+### Login
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "7o2QJpya@qXhIUjc.cy",
+  "password": "password"
+}
+
+### Register
+POST {{baseUrl}}/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "{{$random.email}}",
+  "password": "password",
+  "firstName": "{{$random.name.firstName}}",
+  "lastName": "{{$random.name.lastName}}"
+}
+
+### Update access token
+POST {{baseUrl}}/auth/refresh HTTP/1.1
+
+### Logout
+POST {{baseUrl}}/auth/logout HTTP/1.1
+
+### Get info from token
+GET {{baseUrl}}/auth/me HTTP/1.1

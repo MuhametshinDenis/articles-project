@@ -1,0 +1,25 @@
+name: ${APPLICATION_NAME}
+services:
+  database:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    ports:
+      - "${DATABASE_PORT}:${DATABASE_PORT}"
+    volumes:
+      - articles-project-db-data:/var/lib/postgresql
+
+#  backend:
+#    container_name: backend
+#    build: .
+#    ports:
+#      - "${APPLICATION_PORT}:${APPLICATION_PORT}"
+#    env_file:
+#      - .env
+
+volumes:
+  articles-project-db-data:
