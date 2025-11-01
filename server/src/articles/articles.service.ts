@@ -222,4 +222,18 @@ export class ArticlesService {
       });
     });
   }
+
+  /**
+   * Checks if an article exists by the given ID.
+   *
+   * @param {number} id - The identifier of the article to check for existence.
+   * @return {Promise<boolean>} A promise that resolves to true if the article exists, otherwise false.
+   */
+  public async existsById(id: number): Promise<boolean> {
+    const article = await this.prisma.article.findUnique({
+      where: { id },
+    });
+
+    return !!article;
+  }
 }

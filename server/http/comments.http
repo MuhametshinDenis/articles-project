@@ -1,0 +1,27 @@
+@articleId = 1
+@commentId = 2
+
+### Сreating a comment on an article
+POST {{baseUrl}}/comments HTTP/1.1
+Content-Type: application/json
+
+{
+  "articleId": {{articleId}},
+  "content": "{{$random.lorem.paragraph}}"
+}
+
+### Find all comments on an article
+GET {{baseUrl}}/comments/{{articleId}} HTTP/1.1
+
+### Update comment on an article
+PATCH {{baseUrl}}/comments/{{articleId}}/{{commentId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "articleId": {{articleId}},
+  "commentId": {{commentId}},
+  "content": "{{$random.lorem.paragraph}}"
+}
+
+### Delete comment on an article
+DELETE {{baseUrl}}/comments/{{articleId}}/{{commentId}} HTTP/1.1
