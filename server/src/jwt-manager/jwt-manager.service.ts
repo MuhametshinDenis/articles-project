@@ -66,6 +66,14 @@ export class JwtManagerService {
     });
   }
 
+  public validateAccessToken(accessToken: string): JwtToken {
+    try {
+      return this.jwtAccessService.verify(accessToken);
+    } catch {
+      throw new UnauthorizedException('Token is invalid');
+    }
+  }
+
   public validateRefreshToken(refreshToken: string): JwtToken {
     try {
       return this.jwtRefreshService.verify(refreshToken);

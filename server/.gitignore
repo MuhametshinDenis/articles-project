@@ -17,7 +17,7 @@ lerna-debug.log*
 
 ### Prisma ###
 /generated
-./prisma/migrations
+/prisma/migrations
 
 ### Tests ###
 /coverage

@@ -1,0 +1,27 @@
+@postId = 1
+@postTitle = Lorem
+
+POST {{baseUrl}}/articles HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "{{$random.lorem.paragraph}}",
+  "content": "{{$random.lorem.paragraph}}\n{{$random.lorem.paragraph}}\n{{$random.lorem.paragraph}}",
+  "published": true
+}
+
+### Find post all or by filters
+GET {{baseUrl}}/articles?me=true HTTP/1.1
+
+### Delete post by ID
+DELETE {{baseUrl}}/articles/{{postId}} HTTP/1.1
+
+### Update post by Id
+PATCH {{baseUrl}}/articles/{{postId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "{{$random.lorem.paragraph}}",
+  "content": "{{$random.lorem.paragraph}}\n{{$random.lorem.paragraph}}\n{{$random.lorem.paragraph}}",
+  "published": true
+}

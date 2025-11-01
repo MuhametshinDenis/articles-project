@@ -3,7 +3,7 @@ POST {{baseUrl}}/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "7o2QJpya@qXhIUjc.cy",
+  "email": "1GT27@ZzZmp.uk",
   "password": "password"
 }
 

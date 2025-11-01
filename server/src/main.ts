@@ -16,7 +16,11 @@ async function bootstrap() {
   const configuration = app.get(ConfigService);
   const port = configuration.getOrThrow<number>('application.port');
 
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+    }),
+  );
   app.use(cookieParser());
 
   const documentBuilder = new DocumentBuilder()
