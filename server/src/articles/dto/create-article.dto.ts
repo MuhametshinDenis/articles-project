@@ -10,5 +10,5 @@ export class CreateArticleDto {
   content: string;
 
   @IsBoolean()
-  published?: boolean;
+  published: boolean;
 }

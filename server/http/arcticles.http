@@ -1,5 +1,4 @@
 @postId = 1
-@postTitle = Lorem
 
 ### Creating article
 POST {{baseUrl}}/articles HTTP/1.1
@@ -11,8 +10,11 @@ Content-Type: application/json
   "published": true
 }
 
-### Find post all or by filters
-GET {{baseUrl}}/articles?me=true HTTP/1.1
+### Find post all
+GET {{baseUrl}}/articles HTTP/1.1
+
+### Find post by ID
+GET {{baseUrl}}/articles/{{postId}} HTTP/1.1
 
 ### Delete post by ID
 DELETE {{baseUrl}}/articles/{{postId}} HTTP/1.1

@@ -6,16 +6,11 @@ import {
   Param,
   Patch,
   Post,
-  Query,
   UseGuards,
-  ValidationPipe,
 } from '@nestjs/common';
 import { ArticlesService } from './articles.service';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { AuthGuard } from '../auth/guard/auth.guard';
-import { UserDetails } from 'src/auth/decorator/user-details.decorator';
-import * as userDetailsTypes from '../auth/types/user-details.types';
-import { FindArticlesDto } from './dto/find-articles.dto';
 import { UpdateArticleDto } from './dto/update-article.dto';
 
 @UseGuards(AuthGuard)
@@ -24,36 +19,30 @@ export class ArticlesController {
   constructor(private readonly articlesService: ArticlesService) {}
 
   @Post()
-  public create(
-    @Body() createArticleDto: CreateArticleDto,
-    @UserDetails() userDetails: userDetailsTypes.UserDetailsTypes,
-  ) {
-    return this.articlesService.create(createArticleDto, userDetails);
+  public async create(@Body() createArticleDto: CreateArticleDto) {
+    return this.articlesService.create(createArticleDto);
   }
 
   @Get()
-  public async findAll(
-    @Query(new ValidationPipe({ transform: true }))
-    filters: FindArticlesDto,
-    @UserDetails() userDetails: userDetailsTypes.UserDetailsTypes,
-  ) {
-    return this.articlesService.findByFilters(filters, userDetails);
+  public async findAll() {
+    return this.articlesService.findAll();
   }
 
-  @Delete('/:id')
-  public async delete(
-    @Param('id') postId: number,
-    @UserDetails() userDetails: userDetailsTypes.UserDetailsTypes,
-  ) {
-    return this.articlesService.delete(postId, userDetails);
+  @Get(':id')
+  public async findById(@Param('id') articleId: number) {
+    return this.articlesService.findById(articleId);
   }
 
-  @Patch('/:id')
+  @Patch(':id')
   public async update(
-    @Param('id') postId: number,
-    @UserDetails() userDetails: userDetailsTypes.UserDetailsTypes,
+    @Param('id') articleId: number,
     @Body() updateArticleDto: UpdateArticleDto,
   ) {
-    return this.articlesService.update(updateArticleDto, postId, userDetails);
+    return this.articlesService.update(articleId, updateArticleDto);
+  }
+
+  @Delete(':id')
+  public async delete(@Param('id') articleId: number) {
+    return this.articlesService.delete(articleId);
   }
 }

@@ -7,7 +7,6 @@ import configuration from './config/configuration';
 import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 import { JwtManagerModule } from './jwt-manager/jwt-manager.module';
 import { ArticlesModule } from './articles/articles.module';
-import { CommentsModule } from './comments/comments.module';
 
 @Module({
   imports: [
@@ -23,7 +22,6 @@ import { CommentsModule } from './comments/comments.module';
       isGlobal: true,
       load: [configuration],
     }),
-    CommentsModule,
   ],
 })
 export class AppModule {}
