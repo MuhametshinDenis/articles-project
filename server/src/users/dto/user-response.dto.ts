@@ -1,5 +1,6 @@
-import { User } from 'generated/prisma';
-
-export type UserResponseDto = Promise<
-  Omit<User, 'password' | 'createdAt' | 'updatedAt'>
->;
+export type UserResponseDto = {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+};
