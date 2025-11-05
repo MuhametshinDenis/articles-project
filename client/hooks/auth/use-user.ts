@@ -10,7 +10,7 @@ export const useUser = () => {
 
   const { data, isLoading, isSuccess, error } = useQuery({
     queryFn: getMe,
-    queryKey: ["me"],
+    queryKey: ["user"],
     retry: 1,
   })
 

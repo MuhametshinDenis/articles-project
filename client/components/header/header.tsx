@@ -1,7 +1,6 @@
 "use client"
 
 import { useUserStore } from "@/store/user-store"
-import { Button } from "@/components/ui/button"
 import { LoginDialog } from "@/components/login/login-dialog"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
@@ -30,8 +29,8 @@ const items = [
     link: ROUTES.HOME,
   },
   {
-    title: "My Articles",
-    link: ROUTES.MY_ARTICLES,
+    title: "Create article",
+    link: ROUTES.CREATE_ARTICLE,
   },
 ]
 
